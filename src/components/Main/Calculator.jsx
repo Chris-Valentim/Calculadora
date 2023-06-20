@@ -23,7 +23,6 @@ export default class Calculator extends Component {
     this.clearMemory = this.clearMemory.bind(this)
     this.setOperation = this.setOperation.bind(this)
     this.addDigit = this.addDigit.bind(this)
-
   }
 
   clearMemory() {
@@ -36,11 +35,18 @@ export default class Calculator extends Component {
     } else {
       const equals = operation === '='
       const currentOperation = this.state.operation
+      const operationsFunctions = {
+        '+': (left, right) => left + right,
+        '-': (left, right) => left - right,
+        '/': (left, right) => left / right,
+        '*': (left, right) => left * right,
+      }
       const values = [...this.state.values]
+
       try{
-        values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
+        values[0] = operationsFunctions[currentOperation](values[0], values[1])
       } catch(e) {
-        
+        values[0] = this.state.values[0]
       } 
       this.setState({
         displayValue: values[0],
@@ -54,10 +60,10 @@ export default class Calculator extends Component {
 
   addDigit(n) {
     if(n === '.' && this.state.displayValue.includes('.')) {
-      return
+      return 
     }
     const clearDisplay = this.state.displayValue === '0' 
-    || this.state.clearDisplay 
+      || this.state.clearDisplay 
     const currentValue = clearDisplay ? '' : this.state.displayValue
     const displayValue = currentValue + n 
     this.setState({ displayValue, clearDisplay: false })

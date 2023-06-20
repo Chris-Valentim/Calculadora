@@ -9,6 +9,9 @@
   border: none;
   border-right: var(--border-button);
   border-bottom: var(--border-button);
+  border-left: var(--border-button);
+  border-top: var(--border-button);
+
   outline: none;
 }
 

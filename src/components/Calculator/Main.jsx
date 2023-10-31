@@ -4,6 +4,8 @@ import './Main.css';
 import Button from "../Button/Button";
 import Display from "../Display/Display";
 
+//Estado Inicial//
+
 const initialState = {
   displayValue: '0',
   clearDisplay: false, 
@@ -23,11 +25,15 @@ export default class Calculator extends Component {
     this.setOperation = this.setOperation.bind(this)
     this.addDigit = this.addDigit.bind(this)
   }
-
+  
+  //Limpa a memória em cache//
+  
   clearMemory() {
     this.setState({...initialState})
   }
 
+  //Função responsável por realizar as operações//
+  
   setOperation(operation) {
     if(this.state.current === 0) {
       this.setState({ operation, current: 1, clearDisplay: true})
@@ -61,6 +67,9 @@ export default class Calculator extends Component {
     if(n === '.' && this.state.displayValue.includes('.')) {
       return 
     }
+
+    //Limpa o display e acrescenta no número zero//
+    
     const clearDisplay = this.state.displayValue === '0' 
       || this.state.clearDisplay 
     const currentValue = clearDisplay ? '' : this.state.displayValue
@@ -88,7 +97,7 @@ export default class Calculator extends Component {
         <Button label="9" click={this.addDigit}/>
         <Button label="*" click={this.setOperation} operation/>
         <Button label="4" click={this.addDigit}/>
-        <Button label="5"click={this.addDigit}/>
+        <Button label="5" click={this.addDigit}/>
         <Button label="6" click={this.addDigit}/>
         <Button label="-" click={this.setOperation} operation/>
         <Button label="1" click={this.addDigit}/>

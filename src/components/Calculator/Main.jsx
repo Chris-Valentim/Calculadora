@@ -4,6 +4,8 @@ import './Main.css';
 import Button from "../Button/Button";
 import Display from "../Display/Display";
 
+//Estado Inicial//
+
 //Estado Inicial
 const initialState = {
   displayValue: '0',
@@ -28,12 +30,10 @@ export default class Calculator extends Component {
     this.addDigit = this.addDigit.bind(this)
   }
 
-  //Redefinir o estado do componente para o estado inicial
   clearMemory() {
     this.setState({...initialState})
   }
 
-  //Verificação inicial
   setOperation(operation) {
     if(this.state.current === 0) {
       this.setState({ operation, current: 1, clearDisplay: true})
@@ -77,8 +77,6 @@ export default class Calculator extends Component {
     if(n === '.' && this.state.displayValue.includes('.')) {
       return 
     }
-
-    //Manipulação do display 
     const clearDisplay = this.state.displayValue === '0' 
       || this.state.clearDisplay 
     const currentValue = clearDisplay ? '' : this.state.displayValue
@@ -107,7 +105,7 @@ export default class Calculator extends Component {
         <Button label="9" click={this.addDigit}/>
         <Button label="*" click={this.setOperation} operation/>
         <Button label="4" click={this.addDigit}/>
-        <Button label="5"click={this.addDigit}/>
+        <Button label="5" click={this.addDigit}/>
         <Button label="6" click={this.addDigit}/>
         <Button label="-" click={this.setOperation} operation/>
         <Button label="1" click={this.addDigit}/>

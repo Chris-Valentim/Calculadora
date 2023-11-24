@@ -4,12 +4,7 @@ import './Main.css';
 import Button from "../Button/Button";
 import Display from "../Display/Display";
 
-<<<<<<< HEAD
-//Estado Inicial//
-
 //Estado Inicial
-=======
->>>>>>> ffc2f2d0aa8b3b0fb7115e8b96604b2d4a1437ab
 const initialState = {
   displayValue: '0',
   clearDisplay: false, 
@@ -32,19 +27,11 @@ export default class Calculator extends Component {
     this.setOperation = this.setOperation.bind(this)
     this.addDigit = this.addDigit.bind(this)
   }
-<<<<<<< HEAD
 
   clearMemory() {
     this.setState({...initialState})
   }
 
-=======
-  
-  clearMemory() {
-    this.setState({...initialState})
-  }
-  
->>>>>>> ffc2f2d0aa8b3b0fb7115e8b96604b2d4a1437ab
   setOperation(operation) {
     if(this.state.current === 0) {
       this.setState({ operation, current: 1, clearDisplay: true})

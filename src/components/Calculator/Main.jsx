@@ -4,6 +4,7 @@ import './Main.css';
 import Button from "../Button/Button";
 import Display from "../Display/Display";
 
+//Estado Inicial
 const initialState = {
   displayValue: '0',
   clearDisplay: false, 
@@ -12,28 +13,38 @@ const initialState = {
   current: 0
 }
 
+//Componente da Calculadora
 export default class Calculator extends Component {
 
+  //inicializando o estado do componente
   state = { ...initialState}
 
   constructor(props) {
     super(props)
 
+    //Funções vinculadas ao this (garante acesso correto ao estado e ás funções)
     this.clearMemory = this.clearMemory.bind(this)
     this.setOperation = this.setOperation.bind(this)
     this.addDigit = this.addDigit.bind(this)
   }
 
+  //Redefinir o estado do componente para o estado inicial
   clearMemory() {
     this.setState({...initialState})
   }
 
+  //Verificação inicial
   setOperation(operation) {
     if(this.state.current === 0) {
       this.setState({ operation, current: 1, clearDisplay: true})
+
+    // Quando o current não é 0 
     } else {
+      //Verifica se a operação é uma igualdade
       const equals = operation === '='
       const currentOperation = this.state.operation
+
+      // função que realiza as operações
       const operationsFunctions = {
         '+': (left, right) => left + right,
         '-': (left, right) => left - right,
@@ -42,11 +53,14 @@ export default class Calculator extends Component {
       }
       const values = [...this.state.values]
 
+      // Aqui ele tenta fazer uma operação matemática
       try{
         values[0] = operationsFunctions[currentOperation](values[0], values[1])
       } catch(e) {
         values[0] = this.state.values[0]
       } 
+
+      //Atualiza o estado do componente 
       this.setState({
         displayValue: values[0],
         operation: equals ? null : operation,
@@ -58,15 +72,20 @@ export default class Calculator extends Component {
   }
 
   addDigit(n) {
+
+    // Verificação para o ponto decimal
     if(n === '.' && this.state.displayValue.includes('.')) {
       return 
     }
+
+    //Manipulação do display 
     const clearDisplay = this.state.displayValue === '0' 
       || this.state.clearDisplay 
     const currentValue = clearDisplay ? '' : this.state.displayValue
     const displayValue = currentValue + n 
     this.setState({ displayValue, clearDisplay: false })
 
+    //Manipulação de valores númericos
     if(n !== '.') {
       const i = this.state.current
       const newValue = parseFloat(displayValue)

@@ -2,6 +2,8 @@
 
 Este é um projeto de **Calculadora** desenvolvido com **ReactJS**, utilizando **JavaScript** e **CSS** puro para o estilo. A interface é simples e objetiva, com um layout limpo e responsivo. Ideal para praticar lógica com React e eventos de manipulação de estado.
 
+Acesso o Projeto completo aqui: https://chris-valentim.github.io/Calculadora/
+
 ![Preview do Projeto](src/assets/projetoFinalizado.png)
 
 # Guia de Estilo do Front-end

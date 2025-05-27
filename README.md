@@ -17,18 +17,15 @@ Os designs foram criados para as seguintes larguras:
 
 ## 🌈 Cores
 
-## 🎨 Paleta de Cores (Gradiente de Fundo)
-
-### 🎯 Primárias
-
- - **Laranja** — #fa8231
-
 ### ⚪ Neutras
 
+- **Laranja** — #fa8231
+- **Branco** — `hsl(0, 0%, 100%)`
+
+### 🎨 Paleta de Cores (Gradiente de Fundo)
 - **Azul escuro acinzentado** — #355c7d
 - **bRoxo acinzentado** — #6c5b7
 - **Rosa queimado** — #c06c84
-- **Branco** — `hsl(0, 0%, 100%)`
 
 ## 🚀 Funcionalidades
 
